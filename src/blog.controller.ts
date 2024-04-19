@@ -22,9 +22,12 @@ export class BlogController{
     }
 
     @Get('/:id')
-    getPost(@Param('id') id:String){
+    async getPost(@Param('id') id:String){
         console.log('게시글 하나 가져오기');
-        this.blogService.getPost(id);
+
+        const post = await this.blogService.getPost(id);
+        console.log(post);
+        return post;
     }
 
     @Delete('/:id')
