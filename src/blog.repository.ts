@@ -11,13 +11,12 @@ export interface BlogRepository {
 }
 
 export class BlogFileRepository implements BlogRepository {
-    FILE_NAME = './src/blog.data.json'
+    FILE_NAME = 'blog.data.json';
 
     async getAllPost(): Promise<PostDto[]> {
         const datas = await readFile(this.FILE_NAME, 'utf8');
         const posts = JSON.parse(datas);
         return posts;
-        
     }
 
     async createPost(postDto: PostDto) {
