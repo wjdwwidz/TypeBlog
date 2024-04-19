@@ -3,7 +3,6 @@ import { PostDto } from './blog.model';
 import { BlogFileRepository, BlogRepository } from './blog.repository';
 
 export class BlogService {
-    posts = [];
     blogRepository : BlogRepository;
 
     constructor(){
@@ -18,24 +17,16 @@ export class BlogService {
         this.blogRepository.createPost(postDto);
     }
 
-    // getPost(id){
-    // const post = this.posts.find((post)=>{
-    //     return post.id === id;
-    // });
-    // console.log(post);
-    // return post;
-    // }
+    async getPost(id){
+    return await this.blogRepository.getPost(id);
+    }
 
-    // delete(id){
-    //     const filteredPosts = this.posts.filter((post)=> post.id !== id);
-    //     this.posts = [...filteredPosts];
-    // }
+    delete(id){
+        this.blogRepository.deletePost(id);
+    }
 
-    // updatePost (id, postDto : PostDto){
-    //     let updateIndex = this.posts.findIndex((post)=> post.id === id);
-    //     const updatePost= {id, ...postDto, updatedDt : new Date()};
-    //     this.posts[updateIndex] = updatePost;
-    //     return updatePost;
-    // }
+    updatePost (id, postDto : PostDto){
+        this.blogRepository.updatePost(id, postDto);
+    }
 }
 
