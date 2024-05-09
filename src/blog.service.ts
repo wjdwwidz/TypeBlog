@@ -1,13 +1,12 @@
-//메모리에 저장하는 블로그 서비스 클래스
 import { PostDto } from './blog.model';
 import { BlogFileRepository, BlogRepository } from './blog.repository';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class BlogService {
-    blogRepository : BlogRepository;
+    constructor(private blogRepository: BlogFileRepository){}
 
-    constructor(){
-        this.blogRepository = new BlogFileRepository();
-    }
+    posts = [];
 
     async getAllPosts(){
         return await this.blogRepository.getAllPost();
