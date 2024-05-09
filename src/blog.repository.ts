@@ -2,6 +2,7 @@
 import { Injectable } from '@nestjs/common';
 import { readFile, writeFile } from 'fs/promises';
 import { PostDto } from './blog.model';
+import { Injectable } from '@nestjs/common';
 
 export interface BlogRepository {
     getAllPost(): Promise<PostDto[]>;
