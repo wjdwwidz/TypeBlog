@@ -4,7 +4,7 @@ import { readFile, writeFile } from 'fs/promises';
 import { PostDto } from './blog.model';
 
 export interface BlogRepository {
-    getAllPost(): Promise<PostDto>;
+    getAllPost(): Promise<PostDto[]>;
     createPost(postDto : PostDto);
     getPost(id: String): Promise<PostDto>;
     deletePost(id: String);
@@ -13,7 +13,7 @@ export interface BlogRepository {
 
 @Injectable()
 export class BlogFileRepository implements BlogRepository {
-    FILE_NAME = 'blog.data.json';
+    FILE_NAME = './src/blog.data.json';
 
     async getAllPost(): Promise<PostDto[]> {
         const datas = await readFile(this.FILE_NAME, 'utf8');

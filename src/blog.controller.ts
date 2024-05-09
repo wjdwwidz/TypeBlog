@@ -37,7 +37,7 @@ export class BlogController{
     
     @Put('/:id')
     updatePost(@Param('id') id, @Body() postDto){
-        console.log('게시글 업데이트', postDto);
+        console.log(`[${id}] 게시글 업데이트`, postDto);
         return this.blogService.updatePost(id, postDto);
 
     }
