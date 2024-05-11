@@ -5,7 +5,7 @@
   "main": "dist/src/main",
   "scripts": {
     "build": "nest build",
-    "start:dev": "nest start --watch",
+    "start:dev": "nest build && nest start --watch",
     "start:prod": "node ."
   },
   "keywords": [],
