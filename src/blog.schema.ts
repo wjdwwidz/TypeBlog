@@ -1,26 +1,26 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import {Document, pathsToValidate} from 'mongoose';
 
 export type BlogDocument = Blog & Document;
 
 @Schema()
 export class Blog {
-    @Prop()
-    id : String;
+    @Prop({type: String, required: false})
+    id : string;
 
-    @Prop()
-    title : String;
+    @Prop({type:String, required: true})
+    title : string;
 
-    @Prop()
-    content : String;
+    @Prop({type:String, required:true})
+    content : string;
 
-    @Prop()
-    name : String;
+    @Prop({type:String, required:true})
+    name : string;
 
-    @Prop()
+    @Prop({type:String, required:true})
     createdDt : Date;
 
-    @Prop()
+    @Prop({type:String, required:false})
     updatedDt : Date;
 }
 
