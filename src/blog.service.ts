@@ -7,7 +7,7 @@ export class BlogService {
     constructor(private blogRepository: BlogMongoRepository){}
 
     async getAllPosts() {
-        return this.blogRepository.getAllPost();
+        return await this.blogRepository.getAllPost();
     }
 
     // async getAllPosts(){
