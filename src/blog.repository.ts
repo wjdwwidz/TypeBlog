@@ -18,12 +18,9 @@ export interface BlogRepository {
 @Injectable()
 export class BlogFileRepository implements BlogRepository {
 
-    FILE_NAME = './blog.data.json';
-
-    async getAllPost(): Promise<PostDto[]> {
-        const datas = await readFile(this.FILE_NAME, 'utf8');
-        const posts = JSON.parse(datas);
-        return posts;
+    constructor(@InjectModel(Blog.name) private blogModel: Model<BlogDocument>) {}
+    async getAllPost(): Promise<Blog[]> {
+        return await this.blogModel.find().exec();
     }
 
     // async createPost(postDto: PostDto) {
