@@ -52,3 +52,12 @@ export class BlogFileRepository implements BlogRepository {
     //     await writeFile( this.FILE_NAME, JSON.stringify(posts));
     // }
 }
+
+
+@Injectable()
+export class BlogMongoRepository implements BlogRepository{
+    constructor(@InjectModel(Blog.name) private blogModel: Model<BlogDocument>) {}
+    async getAllPost(): Promise<Blog[]> {
+        return await this.blogModel.find().exec();
+    }
+}
