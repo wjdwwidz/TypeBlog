@@ -1,11 +1,9 @@
+import {Injectable} from '@nestjs/common';
+import {InjectModel} from '@nestjs/mongoose';
+import {Model} from 'mongoose';
+import {PostDto} from './blog.model';
+import {Blog, BlogDocument} from './blog.schema';
 
-import { Injectable } from '@nestjs/common';
-import { readFile, writeFile } from 'fs/promises';
-import { PostDto } from './blog.model';
-
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { Blog, BlogDocument } from './blog.schema';
 
 export interface BlogRepository {
     getAllPost(): Promise<PostDto[]>;
@@ -15,13 +13,12 @@ export interface BlogRepository {
     // updatePost(id: String, postDto : PostDto);
 }
 
-@Injectable()
-export class BlogFileRepository implements BlogRepository {
-
-    constructor(@InjectModel(Blog.name) private blogModel: Model<BlogDocument>) {}
-    async getAllPost(): Promise<Blog[]> {
-        return await this.blogModel.find().exec();
-    }
+// @Injectable()
+// export class BlogFileRepository implements BlogRepository {
+//
+//     async getAllPost(): Promise<PostDto[]> {
+//         return await this.blogModel.find().exec();
+//     }
 
     // async createPost(postDto: PostDto) {
     //     const posts = await this.getAllPost();
@@ -51,12 +48,12 @@ export class BlogFileRepository implements BlogRepository {
     //     posts[index] = updatePost;
     //     await writeFile( this.FILE_NAME, JSON.stringify(posts));
     // }
-}
-
+    // }
 
 @Injectable()
-export class BlogMongoRepository implements BlogRepository{
+export class BlogMongoRepository implements BlogRepository {
     constructor(@InjectModel(Blog.name) private blogModel: Model<BlogDocument>) {}
+
     async getAllPost(): Promise<Blog[]> {
         return await this.blogModel.find().exec();
     }

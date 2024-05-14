@@ -1,19 +1,19 @@
 import { PostDto } from './blog.model';
-import { BlogMongoRepository } from './blog.repository';
 import { Injectable } from '@nestjs/common';
+import {BlogMongoRepository} from "./blog.repository";
 
 @Injectable()
 export class BlogService {
+
     constructor(private blogRepository: BlogMongoRepository){}
 
+    posts : any[] = [];
+
     async getAllPosts() {
+        console.log(this.blogRepository)
         return await this.blogRepository.getAllPost();
     }
 
-    // async getAllPosts(){
-    //     return await this.blogRepository.getAllPost();
-    // }
-    //
     // createPost(postDto: PostDto){
     //     this.blogRepository.createPost(postDto);
     // }
