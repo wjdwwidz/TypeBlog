@@ -31,7 +31,7 @@ export class BlogMongoRepository implements BlogRepository{
         this.blogModel.create(createPost);
     }
 
-    async getPost(id: string) {
+    async getPost(id: string): Promise<any> {
         return await this.blogModel.findById(id);
     }
 
