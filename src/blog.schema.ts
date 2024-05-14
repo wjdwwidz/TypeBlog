@@ -17,10 +17,10 @@ export class Blog {
     @Prop({type:String, required:true})
     name : string;
 
-    @Prop({type:String, required:true})
+    @Prop({type:Date, required:true})
     createdDt : Date;
 
-    @Prop({type:String, required:false})
+    @Prop({type:Date, required:false})
     updatedDt : Date;
 }
 

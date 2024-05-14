@@ -2,12 +2,11 @@ import { Controller, Param, Body, Delete, Get, Post, Put} from '@nestjs/common';
 import { BlogService } from './blog.service'
 
 @Controller('blog')
-export class BlogController{
-
-    constructor(private blogService : BlogService){}
+export class BlogController {
+    constructor(private blogService: BlogService) {}
 
     @Get()
-    getAllPosts(){
+     getAllPosts(){
         console.log('모든 게시글 가져오기');
         return this.blogService.getAllPosts();
     }
