@@ -28,13 +28,13 @@ export class BlogController{
         return post;
     }
 
-    // @Delete('/:id')
-    // deletePost(@Param('id') id:String){
-    //     console.log('게시글 삭제');
-    //     this.blogService.delete(id);
-    //     return 'success';
-    // }
-    //
+    @Delete('/:id')
+    deletePost(@Param('id') id:String){
+        console.log('게시글 삭제');
+        this.blogService.delete(id);
+        return 'success';
+    }
+
     @Put('/:id')
     updatePost(@Param('id') id, @Body() postDto){
         console.log(`[${id}] 게시글 업데이트`, postDto);
