@@ -40,6 +40,6 @@ export class BlogMongoRepository implements BlogRepository{
     }
 
     async updatePost(id: string, postDto: PostDto){
-        const updatePost = { id, ...postDto, updatedDt : new Date() };
+        const updatePost = { ...postDto, updatedDt : new Date() };
         await this.blogModel.findByIdAndUpdate(id, updatePost);    }
 }
